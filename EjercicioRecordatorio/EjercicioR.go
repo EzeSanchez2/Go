@@ -23,18 +23,18 @@ func (v *Vehiculo) AgregarMultas() {
 	v.multas = v.multas + 1
 }
 
-type Controlador interface {
+type Controlador interface { // Controlar Acceso
 	ValidarAcceso() error
 }
 
-func (m Moto) ValidarAcceso() error {
+func (m Moto) ValidarAcceso() error { //Validar Acceso
 	if m.multas > 0 {
 		return ErrAccesoDenegado
 	}
 	return nil
 }
 
-func CheckearEntrada(c Controlador) {
+func CheckearEntrada(c Controlador) {  // Detecto el error, si hay
 	err := c.ValidarAcceso()
 	if err != nil {
 		fmt.Println("ALERTA!, ", err)
@@ -51,6 +51,8 @@ func main() {
 		},
 		cilindtadas: 120,
 	}
+
+	miMoto.AgregarMultas()
 
 	CheckearEntrada(miMoto)
 }
