@@ -7,7 +7,7 @@ import (
 	"time"
 )
 
-type Moto struct {
+type Moto struct { //Defino la estructura Moto
 	Patente string
 	ID      int
 }
